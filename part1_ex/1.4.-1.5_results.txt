@@ -1,0 +1,76 @@
+
+1.4) command within an container
+
+$ docker pull devopsdockeruh/exec_bash_exercise
+Using default tag: latest
+latest: Pulling from devopsdockeruh/exec_bash_exercise
+Digest: sha256:c463832132d1fb0b8b3b60348a6fc36fda7512a4ef2d1050e8bea7b6a6d7a2f3
+Status: Image is up to date for devopsdockeruh/exec_bash_exercise:latest
+
+
+$ docker images
+REPOSITORY                          TAG                 IMAGE ID            CREATED             SIZE
+devopsdockeruh/pull_exercise        latest              d9854bc0e13a        2 months ago        75.3MB
+devopsdockeruh/exec_bash_exercise   latest              489b6d8f2ab8        3 months ago        897MB
+
+$ docker run -d --name bashex 489b6d8f2ab8
+21b228473e65d8058ba139b11f31fc552674319b7f5b1171d6f4749e0d008728
+
+$ docker ps -a
+CONTAINER ID        IMAGE                          COMMAND             CREATED             STATUS                    PORTS               NAMES
+21b228473e65        489b6d8f2ab8                   "node index"        10 seconds ago      Up 8 seconds                                  bashex
+20e2da114e50        devopsdockeruh/pull_exercise   "node index.js"     25 hours ago        Exited (0) 25 hours ago                       clever_napier
+
+$ docker exec -it bashex bash
+root@21b228473e65:/usr/app#  
+
+
+$ docker exec -it bashex bash
+root@21b228473e65:/usr/app# tail -f ./logs.txt
+Wed, 29 May 2019 21:16:00 GMT
+Wed, 29 May 2019 21:16:03 GMT
+Wed, 29 May 2019 21:16:06 GMT
+Wed, 29 May 2019 21:16:09 GMT
+Secret message is:
+"Docker is easy"
+Wed, 29 May 2019 21:16:15 GMT
+Wed, 29 May 2019 21:16:18 GMT
+
+1.5) ubuntu + cmds
+
+$ docker run -it --name ubu7b ubuntu:16.04 sh -c 'apt-get update; apt-get install curl; echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$websit
+e;'
+Get:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+..
+The following NEW packages will be installed:
+  ca-certificates curl krb5-locales libasn1-8-heimdal libcurl3-gnutls libffi6 libgmp10 libgnutls30 libgssapi-krb5-2 libgssapi3-heimdal libhcrypto4-heimdal
+  libheimbase1-heimdal libheimntlm0-heimdal libhogweed4 libhx509-5-heimdal libidn11 libk5crypto3 libkeyutils1 libkrb5-26-heimdal libkrb5-3 libkrb5support0 libldap-2.4-2
+  libnettle6 libp11-kit0 libroken18-heimdal librtmp1 libsasl2-2 libsasl2-modules libsasl2-modules-db libsqlite3-0 libssl1.0.0 libtasn1-6 libwind0-heimdal openssl
+0 upgraded, 34 newly installed, 0 to remove and 10 not upgraded.
+Need to get 5345 kB of archives.
+After this operation, 19.0 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libffi6 amd64 3.2.1-4 [17.8 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libgmp10 amd64 2:6.1.0+dfsg-2 [240 kB]
+
+..
+
+Updating certificates in /etc/ssl/certs...
+148 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Input website:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>  
+
+
+
