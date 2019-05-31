@@ -1,0 +1,7 @@
+
+
+# 1.6 Building and running the container
+  
+docker build -t docker-clock .
+docker run docker-clock
+

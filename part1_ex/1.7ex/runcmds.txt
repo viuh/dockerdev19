@@ -1,0 +1,5 @@
+
+# 1.7 Building and running the container
+  
+docker build -t curler .
+docker run -it curler
