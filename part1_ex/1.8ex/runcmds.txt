@@ -1,0 +1,7 @@
+#1.8
+
+sudo docker pull devopsdockeruh/first_volume_exercise
+docker run -it devopsdockeruh/first_volume_exercise
+mkdir logdir
+touch logdir/logs.txt
+docker run -v $(pwd)/logdir/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise
