@@ -1,0 +1,7 @@
+# backend and frontend (1.12)
+
+docker build -f fr_Docker -t frontd .
+docker run -p 8000:8000 backd
+
+docker build -f fr_Docker -t frontd .
+docker run -p 5000:5000 frontd
