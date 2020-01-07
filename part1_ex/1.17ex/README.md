@@ -12,5 +12,7 @@ explaining own solution.
 
 ## Run via
 
-> docker run -it ownenv
+> docker pull viuh/pytempl 
+> docker run -it viuh/pytempl
+
 
