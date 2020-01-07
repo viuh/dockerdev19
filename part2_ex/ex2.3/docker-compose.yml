@@ -1,0 +1,39 @@
+services:
+
+  backend:
+
+#   image: viuh/dock_back
+
+   build: 
+      context: .
+      dockerfile: ends/back_Dockerfile
+
+   ports: 
+      - 8000:8000
+
+   container_name: backend
+
+   environment:
+      - FRONT_URL=http://localhost:5000
+
+
+  frontend:
+
+#   image: viuh/dock_front
+
+   build: 
+      context: .
+      dockerfile: ends/front_Dockerfile
+
+   ports:
+      - 5000:5000
+
+   container_name: frontend
+
+   environment:
+      - API_URL=http://localhost:8000
+
+
+
+version: "3.5"
+
