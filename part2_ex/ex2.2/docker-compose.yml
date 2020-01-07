@@ -1,0 +1,19 @@
+services:
+
+  web:
+
+   image: devopsdockeruh/ports_exercise
+
+   ports:
+     - 80:80
+
+   build: .
+
+#   volumes:
+#     - '/var/tmp/logdir6/logs.txt:/usr/app/logs.txt'
+
+   container_name: ports
+
+
+version: "3.5"
+
