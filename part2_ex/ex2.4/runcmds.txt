@@ -1,0 +1,4 @@
+
+# Scale test
+
+docker-compose up --scale compute=5
