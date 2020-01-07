@@ -1,0 +1,16 @@
+services:
+
+  fvuplain:
+
+   image: devopsdockeruh/first_volume_exercise
+
+   build: .
+
+   volumes:
+     - '/var/tmp/logdir6/logs.txt:/usr/app/logs.txt'
+
+   container_name: fvuplain
+
+
+version: "3.5"
+
