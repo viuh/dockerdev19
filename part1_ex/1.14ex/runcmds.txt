@@ -1,0 +1,7 @@
+
+# 1.14 development side
+
+docker build -t rails .
+docker run -it -p 3000:3000 rails
+ 
+
