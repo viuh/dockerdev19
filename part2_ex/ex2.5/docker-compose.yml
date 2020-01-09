@@ -1,0 +1,68 @@
+
+version: "2"
+
+
+networks:
+   redisnet:
+      driver: bridge
+
+
+services:
+
+  redis:
+    image: redis
+    networks:
+      - redisnet
+    #expose:
+    #  - 6379
+    ports:
+      - 6379:6379
+
+
+  backend:
+
+   build: 
+      context: .
+      dockerfile: ends/back_Dockerfile
+
+   ports: 
+       - 8000:8000
+
+   container_name: backend25a
+
+   environment:
+      - REDIS=redis
+      - FRONT_URL=http://localhost:5000
+
+
+   links:
+      - redis
+
+   volumes:
+      - ./logdir/:/root/.npm/_logs
+
+
+   networks:
+      - redisnet
+
+
+
+  frontend:
+
+   build:
+      context: .
+      dockerfile: ends/front_Dockerfile
+
+   ports:
+      - 5000:5000
+
+   container_name: frontend25a
+
+   environment:
+      - API_URL=http://localhost:8000
+
+   #depends_on:
+   #   - backend
+
+
+
